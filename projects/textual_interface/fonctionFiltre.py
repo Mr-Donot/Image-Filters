@@ -31,29 +31,31 @@ def normalizeMask(mask):
     temp = max(mask)
     return [mask[0]/temp, mask[1]/temp, mask[2]/temp]
 
+def filterWithHexadecimal(img, hexa):
+    if not isHexa(hexa):
+        print("Wrong hexadecimal format.")
+        return isHexa(hexa)
+    
+    if len(hexa)==7:
+        hexa = hexa[1:]
+    mask = list(map(lambda x : int(x, 16), [hexa[0:2],hexa[2:4], hexa[4:]]))
+    filterWithMask(img, mask)
 
-def filtreVert(monImage):
-  
-    (largeur,hauteur)=monImage.size
-    img = Image.new('RGB', (largeur,hauteur), color = (0, 1, 0))
-    for i in range (0,largeur):
-        for j in range (0,hauteur):
-            pTemp = img.getpixel((i,j))
-            p=monImage.getpixel((i,j))
-            img.putpixel((i,j),(p[0]*pTemp[0],p[1]*pTemp[1],p[2]*pTemp[2]))
-    img.show()
-    saveImg(img)
+def isHexa(hexa):
+    if len(hexa)!= 6 and len(hexa)!= 7:
+        return False
 
-def filtreVertOld(monImage):
-  
-    (largeur,hauteur)=monImage.size
-    img = Image.new('RGB', (largeur,hauteur), color = (0, 0, 0))
-    for i in range (0,largeur):
-        for j in range (0,hauteur):
-            p=monImage.getpixel((i,j))
-            img.putpixel((i,j),(0,p[1], 0))
-    img.show()
-    saveImg(img)
+    if len(hexa) == 7 and hexa[0] != '#':
+        return False
+    if len(hexa)==7:
+        hexa = hexa[1:]
+    possibleChar = 'aAbBcCdDeEfF0123456789'
+    for i in hexa:
+        if i not in possibleChar:
+            return False
+    return True
+
+
 
 def filtreNoirBlanc(monImage):
     
@@ -67,15 +69,19 @@ def filtreNoirBlanc(monImage):
     img.show()
     saveImg(img)
 
-def rotation(img):
 
-    img.rotate(180).show()
+def rotation(img):
     img = img.rotate(180)
+    img.show()
+    saveImg(img)
+
+def rotationCustomAngle(img, angle):
+    img = img.rotate(angle)
+    img.show()
     saveImg(img)
 
 def miroir (img):
-
-    img.transpose(Image.FLIP_LEFT_RIGHT).show()
     img = img.transpose(Image.FLIP_LEFT_RIGHT)
+    img.show()
     saveImg(img)
 

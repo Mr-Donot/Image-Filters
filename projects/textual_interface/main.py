@@ -1,14 +1,14 @@
 from PIL import Image
-import fonctionFiltre
+from fonctionFiltre import *
 import os
-
 import tkinter
 from tkinter import filedialog
 
-tkinter.Tk().withdraw() # prevents an empty tkinter window from appearing
+tkinter.Tk().withdraw()
 
 nomImage = filedialog.askopenfilename()
 monImage=Image.open(nomImage)
+
 #choix entre filtre ou rotation :
 
 while True :
@@ -37,13 +37,13 @@ while True :
 
 #filtre vert :
             if choix == "1":
-                fonctionFiltre.filtreVert(monImage)
+                filterWithMask(monImage, [0,1,0])
 
             elif choix == "2":
-                fonctionFiltre.filtreNegatif(monImage)
+                filtreNegatif(monImage)
 
             elif choix == "3":
-                fonctionFiltre.filtreNoirBlanc(monImage)
+                filtreNoirBlanc(monImage)
             elif choix == "exit":
                 break
 #rotation :
@@ -60,10 +60,10 @@ while True :
                 choix=input("\nJe n'ai pas compris, veuillez répéter :")
 
             if choix == "m" or choix == "M" :
-                fonctionFiltre.miroir(monImage)
+                miroir(monImage)
 
             elif choix == "d" or choix == "D" :
-                fonctionFiltre.rotation(monImage)
+                rotation(monImage)
 
             elif choix =="exit":
                 break
