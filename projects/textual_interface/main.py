@@ -2,10 +2,13 @@ from PIL import Image
 import fonctionFiltre
 import os
 
-print ("Bonjour, et bienvenue !")
-nomImage=input("Veuillez écrire le nom de l'image, sans oublier son format : ")
-if nomImage[0] != "/": nomImage = "/"+nomImage
-monImage=Image.open(os.getcwd().replace("\\", "/") + nomImage)
+import tkinter
+from tkinter import filedialog
+
+tkinter.Tk().withdraw() # prevents an empty tkinter window from appearing
+
+nomImage = filedialog.askopenfilename()
+monImage=Image.open(nomImage)
 #choix entre filtre ou rotation :
 
 while True :
