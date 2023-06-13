@@ -6,8 +6,8 @@ from tkinter import filedialog
 
 tkinter.Tk().withdraw()
 
-nomImage = filedialog.askopenfilename()
-monImage=Image.open(nomImage)
+filePath = filedialog.askopenfilename()
+monImage=Image.open(filePath)
 
 #choix entre filtre ou rotation :
 
