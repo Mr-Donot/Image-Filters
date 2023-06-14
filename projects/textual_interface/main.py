@@ -1,5 +1,6 @@
 from PIL import Image
-from fonctionFiltre import *
+from filters import *
+from movements import *
 import os
 import tkinter
 from tkinter import filedialog
@@ -60,10 +61,10 @@ while True :
                 choix=input("\nJe n'ai pas compris, veuillez répéter :")
 
             if choix == "m" or choix == "M" :
-                miroir(monImage)
+                verticalMirror(monImage)
 
             elif choix == "d" or choix == "D" :
-                rotation(monImage)
+                rotateCustomAngle(monImage, 180)
 
             elif choix =="exit":
                 break

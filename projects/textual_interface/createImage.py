@@ -1,5 +1,6 @@
+from PIL import Image
 from fonctionFiltre import *
-
+from utils import *
 
 def createUniformImageWithHexa(hexa, largeur, hauteur):
     if not isHexa(hexa):
