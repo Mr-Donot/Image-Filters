@@ -13,48 +13,47 @@ monImage=Image.open(filePath)
 #choix entre filtre ou rotation :
 
 while True :
-    print ("\nTrès bien. Vous allez maintenant pouvoir choisir le changement a appliquer a votre image : ")
-    print ("\n -filtre de couleur (f)")
-    print (" -rotation (r)")
+    print ("\nWhat do you want to do with your loaded image ? : \n")
+    print (" -Apply a filter ? (f)")
+    print (" -Apply a movement ? (r)")
 
     choix=input()
 
     while choix!="f" and choix!="F" and choix!="r" and choix!="R" and choix!="exit" :
-        choix=input("\nJe n'ai pas compris, veuillez répéter :")
+        choix=input("\nDidn't understand, try again :")
 
 #filtre :
 
     if choix == "f" or choix == "F" :
         while True :
-            print ("\nTrès bien. Vous allez maintenant pouvoir choisir le filtre a appliquer a votre image : ")
-            print ("Veuillez choisir un filtre parmi ceux proposés : ")
-            print ("\n  -vert (1)")
-            print ("  -négatif (2)")
-            print ("  -noir et blanc (3)")
+            print ("\nWhich filter do you want to use ? : ")
+            print ("Available filters : \n")
+            print ("  -Green (1)")
+            print ("  -Negative (2)")
+            print ("  -Black and white (3)")
             choix=input()
 
             while choix!="1" and choix!="2" and choix!="3" and choix!="exit" :
-                choix=input("\nJe n'ai pas compris, veuillez répéter :")
+                choix=input("\nDidn't understand, try again :")
 
-#filtre vert :
             if choix == "1":
                 filterWithMask(monImage, [0,1,0])
 
             elif choix == "2":
-                filtreNegatif(monImage)
+                filtreNegative(monImage)
 
             elif choix == "3":
-                filtreNoirBlanc(monImage)
+                filterBlackAndWhite(monImage)
             elif choix == "exit":
                 break
 #rotation :
 
     elif choix == "R" or choix == "r" :
         while True :
-            print ("Très bien. Vous allez maintenant pouvoir choisir le changement a appliquer a votre image : ")
-            print ("\nVeuillez choisir un changement parmi ceux proposés :")
-            print ("\n  -miroir (m)")
-            print ("\n  -180 degrés (d)")
+            print ("Which movement do you want to use ? : ")
+            print ("\nAvailable movements :")
+            print ("\n  -Vertical Mirror (m)")
+            print ("\n  -Rotate 180 degrees (d)")
             choix=input()
 
             while choix!="m" and choix!="d" and choix!="M" and choix!="D" and choix!="exit":
